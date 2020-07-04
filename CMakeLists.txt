@@ -94,9 +94,11 @@ if(CURLPP_BUILD_SHARED_LIBS)
    add_library(${PROJECT_NAME} SHARED ${HeaderFileList} ${SourceFileList})
    target_link_libraries(${PROJECT_NAME} ${CURL_LIBRARIES} ${CONAN_LIBS})
    set_target_properties(${PROJECT_NAME} PROPERTIES SOVERSION 1 VERSION 1.0.0)
+   target_include_directories(${PROJECT_NAME} PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 endif()
 
 add_library(${PROJECT_NAME}_static STATIC ${HeaderFileList} ${SourceFileList})
+target_include_directories(${PROJECT_NAME}_static PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 # Make sure that on unix-platforms shared and static libraries have
 # the same root name, but different suffixes.
